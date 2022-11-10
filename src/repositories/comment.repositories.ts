@@ -35,33 +35,33 @@ export class CommentRepository {
 
       let photo = await PhotoSchema.find({ user_id });
 
-      let value
+      let value: number = 0;
       photo.forEach(data => {
          data.comments.forEach(info => {
             if (info == _id) {
-               value = "salom";
+               value = value + 1;
             }
          })
       })
 
-      if (user_id != comment?.user_id || !value) {
+      if (user_id == comment?.user_id || value > 0) {
+         let removeComment = await CommentSchema.updateOne(
+            { _id: _id },
+            { status: "delete" }
+         );
+
+         let removedcomment = await CommentSchema.findById({ _id: _id });
+
+         return removedcomment
+      } else {
          throw new Error("can only delete what he wrote or posted himself");
       }
 
-      let removeComment = await CommentSchema.updateOne(
-         { _id: _id },
-         { status: "delete" }
-      );
-
-      let removedcomment = await CommentSchema.findById({ _id: _id });
-
-      return removedcomment
    }
 
 
    async findById(_id: string) {
       let data = await CommentSchema.findById({ _id: _id, status: "active" });
-
       return data
    }
 }
