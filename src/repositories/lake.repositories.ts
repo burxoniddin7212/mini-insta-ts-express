@@ -14,7 +14,6 @@ export class LikeRepository {
   async postLike(data: likePost) {
 
     let record = await LikeSchema.find(data);
-    console.log(record);
 
     if (!record[0]) {
       let post = await PhotoSchema.findById({ _id: data.post_id });
@@ -28,6 +27,7 @@ export class LikeRepository {
         { _id: data.post_id },
         { like: likeCount }
       );
+      
       return like
     }
 
@@ -46,6 +46,7 @@ export class LikeRepository {
         { user_id: data.user_id, post_id: data.post_id },
         { status: "delete" }
       );
+
       return like
     }
 
@@ -64,6 +65,7 @@ export class LikeRepository {
         { user_id: data.user_id, post_id: data.post_id },
         { status: "active" }
       );
+
       return like
     }
 
