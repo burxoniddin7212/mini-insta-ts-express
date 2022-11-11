@@ -4,12 +4,12 @@ import { Schema, model, Types } from "mongoose";
 
 const LikeSchema = new Schema({
 
-   user: {
+   user_id: {
       type: Types.ObjectId,
       required: true,
       ref: "User"
    },
-   post: {
+   post_id: {
       type: Types.ObjectId,
       required: true,
       ref: "Photo"
