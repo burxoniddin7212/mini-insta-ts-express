@@ -1,4 +1,3 @@
-import path from 'path';
 import sha256 from "sha256";
 import jwt from "jsonwebtoken";
 import UserSchema from "../modules/Users"
