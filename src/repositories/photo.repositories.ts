@@ -24,6 +24,7 @@ export class PhotoRepository {
     const record = await PhotoSchema.find({ status: "active" });
     return record;
   }
+
   async getById(_id: string) {
     const record = await PhotoSchema.find({ status: "active", _id });
     return record;
