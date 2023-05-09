@@ -1,37 +1,38 @@
 import { Schema, model, Types } from "mongoose";
 
-
-
-const PhotoSchema = new Schema({
-   title: {
-      type: String
-   },
-   photo: {
+const PhotoSchema = new Schema(
+  {
+    title: {
       type: String,
-      required: true
-   },
-   like: {
+    },
+    photo: {
       type: String,
-      default: "0"
-   },
-   user: {
+      required: true,
+    },
+    like: {
+      type: String,
+      default: "0",
+    },
+    user: {
       type: Types.ObjectId,
       required: true,
-      ref: "User"
-   },
-   comments: [{
-      type: Types.ObjectId,
-      ref: "Comment"
-   }],
-   status: {
+      ref: "User",
+    },
+    comments: [
+      {
+        type: Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+    status: {
       type: String,
-      default: "active"
-   }
-}, {
-   versionKey: false,
-   timestamps: true,
-})
+      default: "active",
+    },
+  },
+  {
+    versionKey: false,
+    timestamps: true,
+  }
+);
 
-
-
-export default model('Photo', PhotoSchema)
+export default model("Photo", PhotoSchema);

@@ -50,7 +50,7 @@ export class UserRepository {
          { _id: data.user_id },
          { user_name: 'deleteaccaunt' }
       );
-      
+
       let post = await PhotoSchema.updateMany(
          { user: data.user_id },
          { status: 'delete' }
@@ -80,9 +80,8 @@ export class UserRepository {
 
    async signup(data: signSchema) {
       let user = await this.findOne(data.email);
-      if (user) {
-         throw new Error("email unieq")
-      }
+      if (user) throw new Error("email unieq")
+
       else {
          data.password = sha256(data.password);
          const { user_name, _id, email, password } = await UserSchema.create(data);

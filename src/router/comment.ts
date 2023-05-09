@@ -4,10 +4,8 @@ import cheekToken from "../middleweire/cheekToken";
 
 const router = Router();
 
-router.get('/comment', controller.GET);
-router.post('/comment', [cheekToken], controller.POST);
-router.delete('/comment/:id', [cheekToken], controller.DELETE);
-
-
+router.get("/comment", controller.GET);
+router.post("/comment", [cheekToken], controller.POST);
+router.delete("/comment/:id", [cheekToken], controller.DELETE);
 
 export default router;

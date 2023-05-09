@@ -1,32 +1,30 @@
 import { Schema, model, Types } from "mongoose";
 
-
-
-const CommentSchema = new Schema({
-
-   user_id: {
+const CommentSchema = new Schema(
+  {
+    user_id: {
       type: Types.ObjectId,
       required: true,
-      ref: "User"
-   },
-   post_id: {
+      ref: "User",
+    },
+    post_id: {
       type: Types.ObjectId,
       required: true,
-      ref: "Photo"
-   },
-   tittle: {
+      ref: "Photo",
+    },
+    tittle: {
       type: String,
-      required: true
-   },
-   status: {
+      required: true,
+    },
+    status: {
       type: String,
-      default: "active"
-   }
-}, {
-   versionKey: false,
-   timestamps: true,
-})
+      default: "active",
+    },
+  },
+  {
+    versionKey: false,
+    timestamps: true,
+  }
+);
 
-
-
-export default model('Comment', CommentSchema)
+export default model("Comment", CommentSchema);
